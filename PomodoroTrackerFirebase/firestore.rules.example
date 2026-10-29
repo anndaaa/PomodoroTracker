@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // DEMO TUGAS: hanya untuk pengembangan dan pengujian.
+    // Ini mengizinkan siapa pun membaca/menulis data dan TIDAK AMAN untuk aplikasi publik.
+    // Sebelum dipublikasikan, aktifkan Firebase Authentication dan batasi akses per pengguna.
+    match /pomodoroSessions/{sessionId} {
+      allow read, write: if true;
+    }
+  }
+}

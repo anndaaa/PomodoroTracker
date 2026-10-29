@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#6c63ff" />
+    <title>Pomodoro Tracker</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">FOKUS LEBIH BAIK</p>
+          <h1>Pomodoro Tracker</h1>
+          <p class="subtitle">Kerja fokus, istirahat teratur.</p>
+        </div>
+      </header>
+
+      <section class="timer-card">
+        <div class="mode-tabs" role="group" aria-label="Pilih sesi">
+          <button class="mode-btn active" data-mode="work">Fokus</button>
+          <button class="mode-btn" data-mode="short">Istirahat pendek</button>
+          <button class="mode-btn" data-mode="long">Istirahat panjang</button>
+        </div>
+
+        <p class="session-label" id="sessionLabel">WAKTU FOKUS</p>
+        <div class="timer" id="timer" aria-live="polite">25:00</div>
+        <p class="timer-hint" id="timerHint">Satu tugas dalam satu waktu.</p>
+
+        <div class="timer-actions">
+          <button class="btn primary" id="startPauseBtn">Mulai</button>
+          <button class="btn secondary" id="resetBtn">Atur ulang</button>
+          <button class="btn ghost" id="skipBtn">Lewati sesi</button>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </section>
+
+      <section class="settings-card">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SESUAIKAN</p>
+            <h2>Pengaturan sesi</h2>
+          </div>
+        </div>
+
+        <div class="settings-grid">
+          <label>
+            Fokus (menit)
+            <input
+              id="workMinutes"
+              type="number"
+              min="1"
+              max="180"
+              value="25"
+            />
+          </label>
+
+          <label>
+            Istirahat pendek
+            <input id="shortMinutes" type="number" min="1" max="60" value="5" />
+          </label>
+
+          <label>
+            Istirahat panjang
+            <input id="longMinutes" type="number" min="1" max="90" value="15" />
+          </label>
+
+          <label>
+            Sesi sebelum istirahat panjang
+            <input id="longEvery" type="number" min="2" max="12" value="4" />
+          </label>
+        </div>
+
+        <button class="btn secondary" id="saveSettingsBtn">
+          Simpan pengaturan
+        </button>
+      </section>
+
+      <section class="stats-section">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">PROGRES HARI INI</p>
+            <h2>Statistik harian</h2>
+          </div>
+          <button class="text-btn" id="refreshStatsBtn">Perbarui</button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card">
+            <span class="stat-icon">🎯</span>
+            <p>Sesi fokus selesai</p>
+            <strong id="completedCount">0</strong>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-icon">⏱️</span>
+            <p>Menit fokus</p>
+            <strong id="focusMinutesCount">0</strong>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-icon">☕</span>
+            <p>Istirahat selesai</p>
+            <strong id="breakCount">0</strong>
+          </article>
+        </div>
+
+        <p class="data-note" id="statsNote">
+          Statistik disimpan di perangkat ini.
+        </p>
+
+        <div class="history-card">
+          <h3>Riwayat sesi hari ini</h3>
+          <div id="historyList" class="history-list">
+            <p class="empty-state">
+              Belum ada sesi selesai. Mulai fokus pertamamu!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        Pomodoro Tracker · HTML, CSS, JavaScript, Cordova & Firebase
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="cordova.js"></script>
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
